@@ -67,6 +67,8 @@ public class ListFragment extends Fragment {
         states.add(new Actor ("Tom Cruise", new Date(1962, 7, 3), R.drawable.tom_cruise));
         states.add(new Actor ("Johnny Depp", new Date(1963, 6, 9), R.drawable.johnny_depp));
         states.add(new Actor ("Angelina Jolie", new Date(1975, 6, 4), R.drawable.angelina_jolie));
+        states.add(new Actor ("Ryan Reynolds", new Date(1976, 10, 23), R.drawable.ryan_reynolds));
+        states.add(new Actor ("Ryan Gosling", new Date(1980, 11, 12), R.drawable.ryan_gosling));
 
     }
 }
