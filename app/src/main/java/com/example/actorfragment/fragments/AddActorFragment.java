@@ -1,26 +1,21 @@
-package com.example.actorfragment;
+package com.example.actorfragment.fragments;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
+import com.example.actorfragment.entities.Actor;
 import com.example.actorfragment.databinding.FragmentAddActorBinding;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
@@ -31,10 +26,7 @@ public class AddActorFragment extends Fragment {
 
     FragmentAddActorBinding binding;
 
-
-    public AddActorFragment() {
-        // Required empty public constructor
-    }
+    public AddActorFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +43,8 @@ public class AddActorFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initCommitBtn();
+
+        commitBtnInit();
         setChangerDate();
         addPhotoBtn();
     }
@@ -66,7 +59,7 @@ public class AddActorFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        binding.photo.setImageURI(data.getData());
+        binding.photoBtn.setImageURI(data.getData());
 
     }
 
@@ -92,16 +85,16 @@ public class AddActorFragment extends Fragment {
     }
 
     private void setInitialDateTime() {
-        binding.dateBtn.setText(DateUtils.formatDateTime(getContext(),
+        binding.dateView.setText(DateUtils.formatDateTime(getContext(),
                 dateAndTime.getTimeInMillis(),
                 DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR));
     }
 
-    private void initCommitBtn(){
+    private void commitBtnInit(){
         binding.commitBtn.setOnClickListener((v)->{
             String fullName = binding.userFullName.getText().toString();
             Date dateOfBorn = dateAndTime.getTime();
-            Drawable photo = binding.photo.getDrawable();
+            Drawable photo = binding.photoBtn.getDrawable();
             Actor actor = new Actor(fullName, dateOfBorn, photo);
 
             ListFragment.actors.add(actor);

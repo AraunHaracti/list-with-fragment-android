@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">ActorFragment</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="item_list_full_name">ФИО</string>
+    <string name="item_list_date_of_born">Дата рождения</string>
+    <string name="item_list_photo_description">item_list_photo</string>
+    <string name="change_date">Change Date</string>
+    <string name="hint_full_name">FullName</string>
+    <string name="btn_add_actor">Add Actor</string>
 </resources>

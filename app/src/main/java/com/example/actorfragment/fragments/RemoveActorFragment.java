@@ -1,30 +1,30 @@
-package com.example.actorfragment;
+package com.example.actorfragment.fragments;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.actorfragment.databinding.FragmentAddActorBinding;
+import com.example.actorfragment.entities.Actor;
 import com.example.actorfragment.databinding.FragmentRemoveActorBinding;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
 
 public class RemoveActorFragment extends Fragment {
 
     FragmentRemoveActorBinding binding;
 
     Actor selectedActor;
+    long selectedActorId;
 
-    public RemoveActorFragment(Actor selectedActor) {
+    public RemoveActorFragment(Actor selectedActor, long selectedActorId) {
         this.selectedActor = selectedActor;
+        this.selectedActorId = selectedActorId;
     }
 
     @Override
@@ -42,13 +42,32 @@ public class RemoveActorFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         setData();
+        agreeBtnInit();
+        disagreeBtnInit();
+    }
+
+    private void agreeBtnInit(){
+        binding.selectedAgreeBtn.setOnClickListener(view -> {
+            ListFragment.actors.remove((int) selectedActorId);
+
+            getActivity().getSupportFragmentManager().popBackStack();
+        });
+    }
+
+    private void disagreeBtnInit(){
+        binding.selectedDisagreeBtn.setOnClickListener(view -> {
+            getActivity().getSupportFragmentManager().popBackStack();
+        });
     }
 
     public void setData(){
         binding.selectedActorImage.setImageDrawable(selectedActor.getPhotoResource());
         binding.selectedActorFullName.setText(selectedActor.getFullName());
-        binding.selectedActorDateOfBorn.setText(selectedActor.getDateOfBorn().toString());
+        binding.selectedActorDateOfBorn.setText(DateUtils.formatDateTime(getContext(),
+                selectedActor.getDateOfBorn().getTime(),
+                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR)    );
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.actorfragment;
+package com.example.actorfragment.entities;
 
 import android.graphics.drawable.Drawable;
 
