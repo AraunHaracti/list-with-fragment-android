@@ -1,13 +1,15 @@
 package com.example.actorfragment;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.Date;
 
 public class Actor {
     private String fullName;
     private Date dateOfBorn;
-    private int photoResource;
+    private Drawable photoResource;
 
-    public Actor(String fullName, Date dateOfBorn, int photoResource) {
+    public Actor(String fullName, Date dateOfBorn, Drawable photoResource) {
         this.fullName = fullName;
         this.dateOfBorn = dateOfBorn;
         this.photoResource = photoResource;
@@ -29,11 +31,11 @@ public class Actor {
         this.dateOfBorn = dateOfBorn;
     }
 
-    public int getPhotoResource() {
+    public Drawable getPhotoResource() {
         return photoResource;
     }
 
-    public void setPhotoResource(int photoResource) {
+    public void setPhotoResource(Drawable photoResource) {
         this.photoResource = photoResource;
     }
 }

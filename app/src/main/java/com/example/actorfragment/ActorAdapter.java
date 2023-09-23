@@ -32,7 +32,7 @@ public class ActorAdapter extends ArrayAdapter<Actor> {
 
         Actor actor = actors.get(position);
 
-        photoView.setImageResource(actor.getPhotoResource());
+        photoView.setImageDrawable(actor.getPhotoResource());
         fullNameView.setText(actor.getFullName());
         dateOfBornView.setText(actor.getDateOfBorn().toString());
 
