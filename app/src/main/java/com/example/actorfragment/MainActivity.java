@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Options.isFirstInit = false;
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.main_fragment, new ListFragment(), "list_fragment")
