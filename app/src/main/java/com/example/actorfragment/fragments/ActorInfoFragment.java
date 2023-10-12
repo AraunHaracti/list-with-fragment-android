@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.actorfragment.R;
 import com.example.actorfragment.databinding.FragmentActorInfoBinding;
 import com.example.actorfragment.entities.Actor;
 
@@ -33,8 +32,7 @@ public class ActorInfoFragment extends Fragment {
         return actorInfoFragment;
     }
 
-    public ActorInfoFragment() {
-    }
+    public ActorInfoFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

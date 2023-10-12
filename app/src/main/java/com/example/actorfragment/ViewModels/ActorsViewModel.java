@@ -1,17 +1,12 @@
 package com.example.actorfragment.ViewModels;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ArrayAdapter;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
 
 import com.example.actorfragment.R;
 import com.example.actorfragment.entities.Actor;
-import com.example.actorfragment.fragments.ListFragment;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.actorfragment.ViewModels.ActorsViewModel;
 import com.example.actorfragment.entities.Actor;
@@ -21,11 +20,7 @@ import com.example.actorfragment.R;
 import com.example.actorfragment.databinding.FragmentListBinding;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class ListFragment extends Fragment {
 
@@ -45,6 +40,24 @@ public class ListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        Thread load = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    binding.loadBar.post(() -> binding.loadBar.setVisibility(View.VISIBLE));
+                    binding.actorsList.post(() -> binding.actorsList.setVisibility(View.GONE));
+                    Thread.sleep(3000);
+                    binding.loadBar.post(() -> binding.loadBar.setVisibility(View.GONE));
+                    binding.actorsList.post(() -> binding.actorsList.setVisibility(View.VISIBLE));
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        load.start();
 
         actorsViewModel = new ViewModelProvider(getActivity()).get(ActorsViewModel.class);
 

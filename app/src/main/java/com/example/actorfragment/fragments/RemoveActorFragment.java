@@ -2,7 +2,6 @@ package com.example.actorfragment.fragments;
 
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,8 +28,6 @@ public class RemoveActorFragment extends Fragment {
     public RemoveActorFragment(Actor selectedActor, long selectedActorId) {
         this.selectedActor = selectedActor;
         this.selectedActorId = selectedActorId;
-
-
     }
 
     @Override
